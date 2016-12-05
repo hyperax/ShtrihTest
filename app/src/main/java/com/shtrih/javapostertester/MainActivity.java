@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,6 +60,7 @@ public class MainActivity extends Activity implements OnClickListener {
     public static boolean stopPlease = false;
     private final String[] items = {"Кружка", "Ложка", "Миска", "Нож"};
     TextView printReceipt, btnPrintZReport, stopReceipt, btnOpenFiscalDay, btnPrintDayJournal, btnDevices;
+    EditText address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,7 @@ public class MainActivity extends Activity implements OnClickListener {
         btnOpenFiscalDay = (TextView) findViewById(R.id.btnOpenFiscalDay);
         stopReceipt = (TextView) findViewById(R.id.StopReceipt);
         btnDevices = (Button) findViewById(R.id.devices);
+        address = (EditText) findViewById(R.id.address);
         printReceipt.setOnClickListener(this);
         btnPrintZReport.setOnClickListener(this);
         stopReceipt.setOnClickListener(this);
@@ -350,8 +353,9 @@ public class MainActivity extends Activity implements OnClickListener {
                     break;
 
                 case R.id.devices:
-                    Intent i = new Intent(this, DeviceListActivity.class);
-                    startActivityForResult(i, DeviceListActivity.REQUEST_CONNECT_BT_DEVICE);
+//                    Intent i = new Intent(this, DeviceListActivity.class);
+//                    startActivityForResult(i, DeviceListActivity.REQUEST_CONNECT_BT_DEVICE);
+                    connectToDevice(address.getText().toString());
                     break;
 
             }
